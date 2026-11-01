@@ -59,16 +59,44 @@
   nav.toc{background:var(--paper-2);border-top:3px solid var(--lamp);padding:20px 20px 14px;margin:0 -20px;}
   .toc-lead{margin:0 0 12px;font-size:15px;}
   nav.toc ol{list-style:none;counter-reset:m;padding:0;margin:0;}
-  nav.toc li{counter-increment:m;border-bottom:1px solid var(--line);}
+  nav.toc li{border-bottom:1px solid var(--line);}
+  nav.toc li.num{counter-increment:m;}
   nav.toc li:last-child{border-bottom:none;}
   nav.toc a{display:flex;align-items:center;gap:9px;flex-wrap:wrap;
     padding:11px 2px;text-decoration:none;color:var(--ink);font-size:15.5px;line-height:1.5;}
-  nav.toc a::before{content:counter(m);flex:none;width:22px;height:22px;line-height:22px;text-align:center;
+  nav.toc li.num a::before{content:counter(m);flex:none;width:22px;height:22px;line-height:22px;text-align:center;
     background:var(--ink);color:var(--paper);font-size:12px;font-weight:700;border-radius:50%;}
+  nav.toc li.plain a::before{content:"\30FB";flex:none;width:22px;line-height:22px;text-align:center;
+    color:var(--ink-soft);font-size:15px;}
   nav.toc a:hover{color:#1B5E8A;}
   nav.toc .n{font-size:12px;letter-spacing:.06em;border:1px solid var(--ink-soft);
     color:var(--ink-soft);padding:0 6px;border-radius:2px;}
   nav.toc em{font-style:normal;font-size:12px;color:var(--alert);border:1px solid var(--alert);padding:0 6px;border-radius:2px;}
+
+  /* やること3つ */
+  .overview{background:#fff;border:2px solid var(--ink);border-radius:4px;padding:22px 20px 18px;margin:28px 0 30px;}
+  .overview h2{font-size:19px;margin:0 0 4px;font-weight:700;}
+  .overview .ov-lead{font-size:14.5px;color:var(--ink-soft);margin:0 0 18px;}
+  .overview ol{list-style:none;counter-reset:o;padding:0;margin:0;}
+  .overview li{counter-increment:o;position:relative;padding:0 0 18px 46px;}
+  .overview li::before{content:counter(o);position:absolute;left:0;top:0;
+    width:32px;height:32px;line-height:32px;text-align:center;
+    background:var(--ink);color:var(--paper);border-radius:50%;font-size:15px;font-weight:700;}
+  .overview li::after{content:"";position:absolute;left:15.25px;top:37px;bottom:2px;width:1.5px;background:var(--line);}
+  .overview li:last-child{padding-bottom:0;}
+  .overview li:last-child::after{display:none;}
+  .overview .ov-t{display:block;font-weight:700;font-size:16.5px;line-height:1.55;}
+  .overview .ov-d{display:block;font-size:14.5px;color:var(--ink-soft);margin-top:4px;line-height:1.75;}
+  .overview .ov-d b{color:var(--ink);}
+  .overview .ov-step{display:inline-block;font-size:12px;font-weight:700;background:var(--paper-2);
+    border:1px solid var(--line);color:var(--ink-soft);padding:0 7px;border-radius:2px;
+    margin-right:8px;vertical-align:1px;white-space:nowrap;}
+
+  .spaces-note{font-size:14.5px;color:var(--ink-soft);background:var(--paper-2);
+    padding:13px 15px;margin:0 0 16px;border-radius:2px;line-height:1.8;}
+  .spaces-note b{color:var(--ink);}
+  .url-todo{background:var(--alert);color:#fff;font-size:14px;font-weight:700;
+    padding:11px 14px;margin:10px 0 0;border-radius:2px;line-height:1.7;}
 
   details.fold{border:1px solid var(--line);background:#fff;border-radius:3px;margin:34px 0 0;}
   details.fold>summary{cursor:pointer;list-style:none;padding:16px 18px;font-size:18px;font-weight:700;
@@ -244,6 +272,10 @@
     h1{font-size:24px;}
   }
   @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;}}
+  figure.mock{margin:16px 0 18px;padding:14px 12px 10px;background:var(--paper-2);border-radius:6px;}
+  figure.mock svg{display:block;width:100%;max-width:400px;height:auto;margin:0 auto;}
+  figure.mock figcaption{font-size:14px;line-height:1.7;color:var(--ink-soft);margin-top:8px;}
+  figure.mock figcaption::before{content:"図　";font-weight:700;color:var(--ink);}
 </style>
 </head>
 <body>
@@ -264,26 +296,45 @@
 
 <div class="wrap">
 
-  <nav class="toc">
-    <p class="toc-lead"><b>このページでやること</b>　全部で6つ、だいたい15分です。</p>
+  <section class="overview">
+    <h2>やることは、大きく3つです</h2>
+    <p class="ov-lead">細かい手順は下にありますが、やること自体はこの3つだけです。</p>
     <ol>
-      <li><a href="#merit">Googleアカウントを持つと何が良いのか</a></li>
-      <li><a href="#fork">自分がAとBのどちらかを選ぶ</a></li>
-      <li><a href="#step1"><span class="n">手順1</span>芸名用のアカウントを作る<em>Aの方</em></a></li>
-      <li><a href="#step2"><span class="n">手順2</span>スマホに追加する<em>Aの方</em></a></li>
-      <li><a href="#step3"><span class="n">手順3</span>Google Chatアプリを入れる</a></li>
-      <li><a href="#step4"><span class="n">手順4</span>通知をオンにする</a></li>
-      <li><a href="#step5"><span class="n">手順5</span>アドレスをミサキカクに送る</a></li>
-      <li><a href="#step6"><span class="n">手順6</span>マイチャットで表示名を確認</a></li>
-      <li><a href="#faq">よくあるご質問</a></li>
-      <li><a href="#contact">困ったときの連絡先</a></li>
+      <li>
+        <span class="ov-t">お仕事用のアカウントで Google Chat を使えるようにする</span>
+        <span class="ov-d"><span class="ov-step">手順1〜4</span>お仕事用のGoogleアカウントを用意し、アプリを入れて通知をオンにします。</span>
+      </li>
+      <li>
+        <span class="ov-t">スペース招待フォームにアドレスを入力する</span>
+        <span class="ov-d"><span class="ov-step">手順5</span>こちらから招待をお送りしないと参加できないため、お使いになるメールアドレスをお知らせいただきます。</span>
+      </li>
+      <li>
+        <span class="ov-t">出演者登録フォームに入力する</span>
+        <span class="ov-d"><span class="ov-step">手順6</span>お仕事のご依頼やお支払いに必要な情報です。<b>フォームは2つあります</b>ので、どちらもご入力をお願いします。</span>
+      </li>
+    </ol>
+  </section>
+
+  <nav class="toc">
+    <p class="toc-lead"><b>もくじ</b>　手順は全部で6つ、だいたい15分です。</p>
+    <ol>
+      <li class="plain"><a href="#merit">Googleアカウントを持つと何が良いのか</a></li>
+      <li class="plain"><a href="#fork">自分がAとBのどちらかを選ぶ</a></li>
+      <li class="num"><a href="#step1">芸名用のアカウントを作る<em>Aの方</em></a></li>
+      <li class="num"><a href="#step2">スマホに追加する<em>Aの方</em></a></li>
+      <li class="num"><a href="#step3">Google Chatアプリを入れる</a></li>
+      <li class="num"><a href="#step4">通知をオンにする</a></li>
+      <li class="num"><a href="#step5">アドレスをミサキカクに送る</a></li>
+      <li class="num"><a href="#step6">出演者登録フォームに入力する</a></li>
+      <li class="plain"><a href="#faq">よくあるご質問</a></li>
+      <li class="plain"><a href="#contact">困ったときの連絡先</a></li>
     </ol>
   </nav>
 
   <div class="schedule">
     <h3>移行のスケジュール</h3>
     <ol>
-      <li><span class="when">2026年9月〜12月</span><span class="what"><b>移行期間。</b>LINEとGoogle Chatの両方でご連絡します。この間の<b>メインはLINE</b>のままなので、あわてずに準備してください。</span></li>
+      <li><span class="when">2026年11月〜12月</span><span class="what"><b>移行期間。</b>LINEとGoogle Chatの両方でご連絡します。この間の<b>メインはLINE</b>のままなので、あわてずに準備してください。</span></li>
       <li><span class="when">2027年1月〜</span><span class="what"><b>Google Chatがメイン</b>になります。大事なご連絡はこちらに流れます。</span></li>
       <li><span class="when">2027年6月</span><span class="what">LINE公式アカウントでのご連絡を<b>終了</b>します。</span></li>
     </ol>
@@ -440,6 +491,8 @@
         <li>「Google」を選び、お仕事用のメールアドレスとパスワードでログインします。</li>
         <li>右上のアイコンをタップして、<b>2つのアカウントが並んでいる</b>ことを確認します。</li>
       </ol>
+    <figure class="mock"><svg viewBox="0 0 378 330" role="img" aria-label="メールアプリの右上のアイコンをタップし、別のアカウントを追加をタップする図" xmlns="http://www.w3.org/2000/svg" font-family="inherit"><g transform="translate(0,0)"><rect x="2" y="2" width="176" height="326" rx="22" fill="#16283C"/><rect x="10" y="26" width="160" height="286" rx="6" fill="#FAFAF7"/><rect x="70" y="11" width="40" height="5" rx="3" fill="#0E1A28"/><rect x="18" y="34" width="144" height="24" rx="12" fill="#F1EFE9"/><text x="30" y="50" font-size="10" fill="#4A5B6E" font-weight="400" text-anchor="start">メールを検索</text><circle cx="146" cy="46" r="10" fill="#4A5B6E"/><text x="146" y="50" font-size="10" fill="#fff" font-weight="700" text-anchor="middle">本</text><circle cx="30" cy="78" r="8" fill="#E9E6DE"/><rect x="44" y="72" width="90" height="6" rx="3" fill="#E9E6DE"/><rect x="44" y="82" width="60" height="6" rx="3" fill="#E9E6DE"/><circle cx="30" cy="104" r="8" fill="#E9E6DE"/><rect x="44" y="98" width="90" height="6" rx="3" fill="#E9E6DE"/><rect x="44" y="108" width="60" height="6" rx="3" fill="#E9E6DE"/><circle cx="30" cy="130" r="8" fill="#E9E6DE"/><rect x="44" y="124" width="90" height="6" rx="3" fill="#E9E6DE"/><rect x="44" y="134" width="60" height="6" rx="3" fill="#E9E6DE"/><circle cx="30" cy="156" r="8" fill="#E9E6DE"/><rect x="44" y="150" width="90" height="6" rx="3" fill="#E9E6DE"/><rect x="44" y="160" width="60" height="6" rx="3" fill="#E9E6DE"/><circle cx="30" cy="182" r="8" fill="#E9E6DE"/><rect x="44" y="176" width="90" height="6" rx="3" fill="#E9E6DE"/><rect x="44" y="186" width="60" height="6" rx="3" fill="#E9E6DE"/><circle cx="30" cy="208" r="8" fill="#E9E6DE"/><rect x="44" y="202" width="90" height="6" rx="3" fill="#E9E6DE"/><rect x="44" y="212" width="60" height="6" rx="3" fill="#E9E6DE"/><circle cx="30" cy="234" r="8" fill="#E9E6DE"/><rect x="44" y="228" width="90" height="6" rx="3" fill="#E9E6DE"/><rect x="44" y="238" width="60" height="6" rx="3" fill="#E9E6DE"/><circle cx="146" cy="46" r="15" fill="none" stroke="#E8B647" stroke-width="3.5"/><rect x="106" y="64" width="56" height="19" rx="9" fill="#E8B647"/><text x="134.0" y="77.5" font-size="10.5" fill="#16283C" font-weight="700" text-anchor="middle">①タップ</text></g><g transform="translate(198,0)"><rect x="2" y="2" width="176" height="326" rx="22" fill="#16283C"/><rect x="10" y="26" width="160" height="286" rx="6" fill="#FAFAF7"/><rect x="70" y="11" width="40" height="5" rx="3" fill="#0E1A28"/><circle cx="30" cy="226" r="8" fill="#E9E6DE"/><rect x="44" y="220" width="90" height="6" rx="3" fill="#E9E6DE"/><rect x="44" y="230" width="60" height="6" rx="3" fill="#E9E6DE"/><circle cx="30" cy="252" r="8" fill="#E9E6DE"/><rect x="44" y="246" width="90" height="6" rx="3" fill="#E9E6DE"/><rect x="44" y="256" width="60" height="6" rx="3" fill="#E9E6DE"/><circle cx="30" cy="278" r="8" fill="#E9E6DE"/><rect x="44" y="272" width="90" height="6" rx="3" fill="#E9E6DE"/><rect x="44" y="282" width="60" height="6" rx="3" fill="#E9E6DE"/><rect x="18" y="40" width="144" height="170" rx="8" fill="#FFFFFF" stroke="#DCD8CE" stroke-width="1"/><circle cx="36" cy="64" r="10" fill="#4A5B6E"/><text x="36" y="68" font-size="10" fill="#fff" font-weight="700" text-anchor="middle">本</text><text x="52" y="61" font-size="10.5" fill="#16283C" font-weight="700" text-anchor="start">本名のアカウント</text><text x="52" y="74" font-size="9" fill="#4A5B6E" font-weight="400" text-anchor="start">honmyo@…</text><line x1="18" y1="92" x2="162" y2="92" stroke="#DCD8CE"/><text x="30" y="116" font-size="10.5" fill="#16283C" font-weight="700" text-anchor="start">＋ 別のアカウントを追加</text><rect x="22" y="100" width="136" height="24" rx="8" fill="none" stroke="#E8B647" stroke-width="3.5"/><rect x="62.0" y="128" width="56" height="19" rx="9" fill="#E8B647"/><text x="90.0" y="141.5" font-size="10.5" fill="#16283C" font-weight="700" text-anchor="middle">②タップ</text><text x="30" y="170" font-size="10" fill="#4A5B6E" font-weight="400" text-anchor="start">アカウントを管理</text></g><path d="M182 165.0 l12 0" stroke="#4A5B6E" stroke-width="2.5"/><path d="M192 160.0 l6 5 l-6 5" fill="none" stroke="#4A5B6E" stroke-width="2.5"/></svg><figcaption>右上の丸いアイコン → <b>「別のアカウントを追加」</b>。いまのアカウントは消えません。</figcaption></figure>
+
 
       <details class="help">
         <summary>うまくいかないときは</summary>
@@ -482,7 +535,11 @@
       <li>インストールして開きます。</li>
       <li>右上の丸いアイコンをタップし、<b>お仕事用のアカウントに切り替えます</b>。</li>
       <li>右上のアイコンがお仕事用アカウントになっていることを確認します。</li>
+      <li>そのまま、<b>そこに表示されている名前</b>をご確認ください。この名前が、そのまま他の出演者に表示されます。
+        <span class="note">思っていた名前とちがうときは、Googleアカウントの設定 →「個人情報」→「名前」から変更できます。Aの方で芸名になっていない場合は、手順1で作ったアカウントに切り替わっているかも確かめてください。</span></li>
     </ol>
+    <figure class="mock"><svg viewBox="0 0 378 330" role="img" aria-label="チャットアプリの右上のアイコンからお仕事用アカウントを選ぶ図" xmlns="http://www.w3.org/2000/svg" font-family="inherit"><g transform="translate(0,0)"><rect x="2" y="2" width="176" height="326" rx="22" fill="#16283C"/><rect x="10" y="26" width="160" height="286" rx="6" fill="#FAFAF7"/><rect x="70" y="11" width="40" height="5" rx="3" fill="#0E1A28"/><rect x="18" y="34" width="144" height="24" rx="12" fill="#F1EFE9"/><text x="30" y="50" font-size="10" fill="#4A5B6E" font-weight="400" text-anchor="start">チャットを検索</text><circle cx="146" cy="46" r="10" fill="#4A5B6E"/><text x="146" y="50" font-size="10" fill="#fff" font-weight="700" text-anchor="middle">本</text><circle cx="146" cy="46" r="15" fill="none" stroke="#E8B647" stroke-width="3.5"/><rect x="92.0" y="64" width="56" height="19" rx="9" fill="#E8B647"/><text x="120.0" y="77.5" font-size="10.5" fill="#16283C" font-weight="700" text-anchor="middle">①タップ</text><circle cx="30" cy="98" r="8" fill="#E9E6DE"/><rect x="44" y="92" width="90" height="6" rx="3" fill="#E9E6DE"/><rect x="44" y="102" width="60" height="6" rx="3" fill="#E9E6DE"/><circle cx="30" cy="124" r="8" fill="#E9E6DE"/><rect x="44" y="118" width="90" height="6" rx="3" fill="#E9E6DE"/><rect x="44" y="128" width="60" height="6" rx="3" fill="#E9E6DE"/><circle cx="30" cy="150" r="8" fill="#E9E6DE"/><rect x="44" y="144" width="90" height="6" rx="3" fill="#E9E6DE"/><rect x="44" y="154" width="60" height="6" rx="3" fill="#E9E6DE"/><circle cx="30" cy="176" r="8" fill="#E9E6DE"/><rect x="44" y="170" width="90" height="6" rx="3" fill="#E9E6DE"/><rect x="44" y="180" width="60" height="6" rx="3" fill="#E9E6DE"/><circle cx="30" cy="202" r="8" fill="#E9E6DE"/><rect x="44" y="196" width="90" height="6" rx="3" fill="#E9E6DE"/><rect x="44" y="206" width="60" height="6" rx="3" fill="#E9E6DE"/><circle cx="30" cy="228" r="8" fill="#E9E6DE"/><rect x="44" y="222" width="90" height="6" rx="3" fill="#E9E6DE"/><rect x="44" y="232" width="60" height="6" rx="3" fill="#E9E6DE"/></g><g transform="translate(198,0)"><rect x="2" y="2" width="176" height="326" rx="22" fill="#16283C"/><rect x="10" y="26" width="160" height="286" rx="6" fill="#FAFAF7"/><rect x="70" y="11" width="40" height="5" rx="3" fill="#0E1A28"/><circle cx="30" cy="216" r="8" fill="#E9E6DE"/><rect x="44" y="210" width="90" height="6" rx="3" fill="#E9E6DE"/><rect x="44" y="220" width="60" height="6" rx="3" fill="#E9E6DE"/><circle cx="30" cy="242" r="8" fill="#E9E6DE"/><rect x="44" y="236" width="90" height="6" rx="3" fill="#E9E6DE"/><rect x="44" y="246" width="60" height="6" rx="3" fill="#E9E6DE"/><circle cx="30" cy="268" r="8" fill="#E9E6DE"/><rect x="44" y="262" width="90" height="6" rx="3" fill="#E9E6DE"/><rect x="44" y="272" width="60" height="6" rx="3" fill="#E9E6DE"/><rect x="18" y="40" width="144" height="150" rx="8" fill="#FFFFFF" stroke="#DCD8CE" stroke-width="1"/><circle cx="36" cy="66" r="10" fill="#4A5B6E"/><text x="36" y="70" font-size="10" fill="#fff" font-weight="700" text-anchor="middle">本</text><text x="52" y="63" font-size="10.5" fill="#4A5B6E" font-weight="400" text-anchor="start">本名のアカウント</text><text x="52" y="76" font-size="9" fill="#4A5B6E" font-weight="400" text-anchor="start">いまはこちら</text><circle cx="36" cy="108" r="10" fill="#2E6B4F"/><text x="36" y="112" font-size="10" fill="#fff" font-weight="700" text-anchor="middle">芸</text><text x="52" y="105" font-size="10.5" fill="#16283C" font-weight="700" text-anchor="start">お仕事用（芸名）</text><text x="52" y="118" font-size="9" fill="#4A5B6E" font-weight="400" text-anchor="start">geimei@…</text><rect x="22" y="90" width="136" height="36" rx="8" fill="none" stroke="#E8B647" stroke-width="3.5"/><rect x="45.5" y="132" width="89" height="19" rx="9" fill="#E8B647"/><text x="90.0" y="145.5" font-size="10.5" fill="#16283C" font-weight="700" text-anchor="middle">②こちらを選ぶ</text></g><path d="M182 165.0 l12 0" stroke="#4A5B6E" stroke-width="2.5"/><path d="M192 160.0 l6 5 l-6 5" fill="none" stroke="#4A5B6E" stroke-width="2.5"/></svg><figcaption>右上の丸いアイコン → <b>お仕事用のアカウント</b>を選びます。選んだあと、右上のアイコンが変わっていればOKです。</figcaption></figure>
+
 
     <div class="caution">
       <b>ここを間違える方が最も多いです</b>
@@ -524,6 +581,8 @@
       <li>「通知を許可」をオンにし、<b>ロック画面にも表示</b>されるようにします。</li>
       <li>音とバイブレーションもオンにしておくと安心です。</li>
     </ol>
+    <figure class="mock"><svg viewBox="0 0 378 330" role="img" aria-label="チャットアプリの設定から通知をオンにする図" xmlns="http://www.w3.org/2000/svg" font-family="inherit"><g transform="translate(0,0)"><rect x="2" y="2" width="176" height="326" rx="22" fill="#16283C"/><rect x="10" y="26" width="160" height="286" rx="6" fill="#FAFAF7"/><rect x="70" y="11" width="40" height="5" rx="3" fill="#0E1A28"/><circle cx="30" cy="216" r="8" fill="#E9E6DE"/><rect x="44" y="210" width="90" height="6" rx="3" fill="#E9E6DE"/><rect x="44" y="220" width="60" height="6" rx="3" fill="#E9E6DE"/><circle cx="30" cy="242" r="8" fill="#E9E6DE"/><rect x="44" y="236" width="90" height="6" rx="3" fill="#E9E6DE"/><rect x="44" y="246" width="60" height="6" rx="3" fill="#E9E6DE"/><circle cx="30" cy="268" r="8" fill="#E9E6DE"/><rect x="44" y="262" width="90" height="6" rx="3" fill="#E9E6DE"/><rect x="44" y="272" width="60" height="6" rx="3" fill="#E9E6DE"/><rect x="18" y="40" width="144" height="150" rx="8" fill="#FFFFFF" stroke="#DCD8CE" stroke-width="1"/><circle cx="36" cy="64" r="10" fill="#2E6B4F"/><text x="36" y="68" font-size="10" fill="#fff" font-weight="700" text-anchor="middle">芸</text><text x="52" y="61" font-size="10.5" fill="#16283C" font-weight="700" text-anchor="start">お仕事用（芸名）</text><line x1="18" y1="84" x2="162" y2="84" stroke="#DCD8CE"/><text x="30" y="108" font-size="11" fill="#16283C" font-weight="700" text-anchor="start">⚙ 設定</text><rect x="22" y="92" width="136" height="24" rx="8" fill="none" stroke="#E8B647" stroke-width="3.5"/><rect x="67.5" y="120" width="45" height="19" rx="9" fill="#E8B647"/><text x="90.0" y="133.5" font-size="10.5" fill="#16283C" font-weight="700" text-anchor="middle">①設定</text><text x="30" y="164" font-size="10" fill="#4A5B6E" font-weight="400" text-anchor="start">ヘルプ</text></g><g transform="translate(198,0)"><rect x="2" y="2" width="176" height="326" rx="22" fill="#16283C"/><rect x="10" y="26" width="160" height="286" rx="6" fill="#FAFAF7"/><rect x="70" y="11" width="40" height="5" rx="3" fill="#0E1A28"/><rect x="10" y="26" width="160" height="34" rx="6" fill="#F1EFE9"/><text x="22" y="48" font-size="11.5" fill="#16283C" font-weight="700" text-anchor="start">設定</text><text x="22" y="80" font-size="10" fill="#4A5B6E" font-weight="400" text-anchor="start">お仕事用（芸名）</text><rect x="18" y="90" width="144" height="34" rx="6" fill="#FFFFFF" stroke="#DCD8CE" stroke-width="1"/><text x="28" y="111" font-size="11.5" fill="#16283C" font-weight="700" text-anchor="start">通知</text><rect x="118" y="99" width="36" height="18" rx="9" fill="#2E6B4F"/><circle cx="145" cy="108" r="7" fill="#fff"/><text x="100" y="111" font-size="9.5" fill="#2E6B4F" font-weight="700" text-anchor="middle">オン</text><rect x="14" y="86" width="152" height="42" rx="8" fill="none" stroke="#E8B647" stroke-width="3.5"/><rect x="51.0" y="134" width="78" height="19" rx="9" fill="#E8B647"/><text x="90.0" y="147.5" font-size="10.5" fill="#16283C" font-weight="700" text-anchor="middle">②オンにする</text><rect x="18" y="166" width="144" height="28" rx="6" fill="#FFFFFF" stroke="#DCD8CE" stroke-width="1"/><rect x="28" y="177" width="70" height="6" rx="3" fill="#E9E6DE"/><rect x="18" y="200" width="144" height="28" rx="6" fill="#FFFFFF" stroke="#DCD8CE" stroke-width="1"/><rect x="28" y="211" width="90" height="6" rx="3" fill="#E9E6DE"/></g><path d="M182 165.0 l12 0" stroke="#4A5B6E" stroke-width="2.5"/><path d="M192 160.0 l6 5 l-6 5" fill="none" stroke="#4A5B6E" stroke-width="2.5"/></svg><figcaption>ここまでがアプリの中の通知（上の1〜2）です。続けて<b>スマホ本体の設定</b>（上の3〜4）も忘れずに。</figcaption></figure>
+
 
     <details class="help">
       <summary>うまくいかないときは</summary>
@@ -578,6 +637,8 @@
       <li>Gmailアプリで<b>お仕事用アカウントに切り替えてから</b>、招待メールの <kbd>参加</kbd> ボタンを押します。</li>
       <li>Google Chatが開いて、スペースの一覧に表示されれば完了です。</li>
     </ol>
+    <figure class="mock"><svg viewBox="0 0 378 330" role="img" aria-label="メールアプリでお仕事用アカウントに切り替えてから招待メールの参加ボタンを押す図" xmlns="http://www.w3.org/2000/svg" font-family="inherit"><g transform="translate(0,0)"><rect x="2" y="2" width="176" height="326" rx="22" fill="#16283C"/><rect x="10" y="26" width="160" height="286" rx="6" fill="#FAFAF7"/><rect x="70" y="11" width="40" height="5" rx="3" fill="#0E1A28"/><rect x="18" y="34" width="144" height="24" rx="12" fill="#F1EFE9"/><text x="30" y="50" font-size="10" fill="#4A5B6E" font-weight="400" text-anchor="start">メールを検索</text><circle cx="146" cy="46" r="10" fill="#2E6B4F"/><text x="146" y="50" font-size="10" fill="#fff" font-weight="700" text-anchor="middle">芸</text><circle cx="30" cy="78" r="8" fill="#E9E6DE"/><rect x="44" y="72" width="90" height="6" rx="3" fill="#E9E6DE"/><rect x="44" y="82" width="60" height="6" rx="3" fill="#E9E6DE"/><circle cx="30" cy="104" r="8" fill="#E9E6DE"/><rect x="44" y="98" width="90" height="6" rx="3" fill="#E9E6DE"/><rect x="44" y="108" width="60" height="6" rx="3" fill="#E9E6DE"/><circle cx="30" cy="130" r="8" fill="#E9E6DE"/><rect x="44" y="124" width="90" height="6" rx="3" fill="#E9E6DE"/><rect x="44" y="134" width="60" height="6" rx="3" fill="#E9E6DE"/><circle cx="30" cy="156" r="8" fill="#E9E6DE"/><rect x="44" y="150" width="90" height="6" rx="3" fill="#E9E6DE"/><rect x="44" y="160" width="60" height="6" rx="3" fill="#E9E6DE"/><circle cx="30" cy="182" r="8" fill="#E9E6DE"/><rect x="44" y="176" width="90" height="6" rx="3" fill="#E9E6DE"/><rect x="44" y="186" width="60" height="6" rx="3" fill="#E9E6DE"/><circle cx="30" cy="208" r="8" fill="#E9E6DE"/><rect x="44" y="202" width="90" height="6" rx="3" fill="#E9E6DE"/><rect x="44" y="212" width="60" height="6" rx="3" fill="#E9E6DE"/><circle cx="30" cy="234" r="8" fill="#E9E6DE"/><rect x="44" y="228" width="90" height="6" rx="3" fill="#E9E6DE"/><rect x="44" y="238" width="60" height="6" rx="3" fill="#E9E6DE"/><circle cx="146" cy="46" r="15" fill="none" stroke="#E8B647" stroke-width="3.5"/><rect x="62" y="64" width="100" height="19" rx="9" fill="#E8B647"/><text x="112.0" y="77.5" font-size="10.5" fill="#16283C" font-weight="700" text-anchor="middle">①お仕事用にする</text></g><g transform="translate(198,0)"><rect x="2" y="2" width="176" height="326" rx="22" fill="#16283C"/><rect x="10" y="26" width="160" height="286" rx="6" fill="#FAFAF7"/><rect x="70" y="11" width="40" height="5" rx="3" fill="#0E1A28"/><rect x="10" y="26" width="160" height="34" rx="6" fill="#F1EFE9"/><text x="22" y="48" font-size="11.5" fill="#16283C" font-weight="700" text-anchor="start">招待メール</text><text x="22" y="82" font-size="10" fill="#4A5B6E" font-weight="400" text-anchor="start">ミサキカク（Google Chat）</text><text x="22" y="100" font-size="12" fill="#16283C" font-weight="700" text-anchor="start">スペースへの招待</text><rect x="22" y="116" width="120" height="6" rx="3" fill="#E9E6DE"/><rect x="22" y="128" width="100" height="6" rx="3" fill="#E9E6DE"/><rect x="22" y="146" width="136" height="34" rx="6" fill="#F1EFE9"/><text x="32" y="167" font-size="10.5" fill="#16283C" font-weight="700" text-anchor="start">ミサキカク全体連絡</text><rect x="40" y="198" width="100" height="30" rx="15" fill="#16283C"/><text x="90.0" y="218" font-size="12" fill="#fff" font-weight="700" text-anchor="middle">参加</text><rect x="34" y="192" width="112" height="42" rx="8" fill="none" stroke="#E8B647" stroke-width="3.5"/><rect x="62.0" y="240" width="56" height="19" rx="9" fill="#E8B647"/><text x="90.0" y="253.5" font-size="10.5" fill="#16283C" font-weight="700" text-anchor="middle">②タップ</text></g><path d="M182 165.0 l12 0" stroke="#4A5B6E" stroke-width="2.5"/><path d="M192 160.0 l6 5 l-6 5" fill="none" stroke="#4A5B6E" stroke-width="2.5"/></svg><figcaption><b>先にお仕事用に切り替えてから</b>、招待メールの「参加」を押します。本名のまま押すと「権限がありません」と出ます。</figcaption></figure>
+
 
     <div class="lamp">
       <b>フォームが開けない場合・アドレスがまだ作れていない場合</b>
@@ -589,30 +650,25 @@
     <h3 class="mini">参加していただくスペース</h3>
     <p class="minilead">Google Chatでは、グループのことを<b>「スペース」</b>と呼びます。用途ごとに分かれています。<b>「ミサキカク全体連絡」以外は任意</b>です。案内をお送りする関係でa〜eの招待も一律にお送りしますが、興味のないものは<b>参加せずそのままにしていただいて構いません</b>（自動的に何か送られてくることはありません）。すでに参加したあとでも、いつでも退出できます。</p>
     <ul class="spaces">
-      <li><span class="badge req">必須</span><b>ミサキカク全体連絡</b><span class="sub">運営からの大切なお知らせを流します。<b>通知はオンのままを強くおすすめします</b>（稽古日の変更やお支払いのご連絡が流れます）。<span class="freq">流れる量の目安：<b>月1回ほど</b>（2026年1〜8月で7回）</span></span></li>
+      <li><span class="badge req">必須</span><b>ミサキカク全体連絡</b><span class="sub">運営からの大事なお知らせ、表現者全員に関わる情報を流します。<b>通知はオンが推奨です。</b><span class="freq">流れる量の目安：<b>月1回ほど</b>（2026年1〜8月で7回）</span></span></li>
       <li><span class="badge">任意</span><b>a_ミサキカクの募集</b><span class="sub">ミサキカク主催の公演・イベントの出演募集。<span class="freq">流れる量の目安：<b>月1〜2回</b>（2026年1〜8月で9回）</span></span></li>
       <li><span class="badge">任意</span><b>b_他団体の募集</b><span class="sub">ミサキカク以外の団体から届いた出演募集。<span class="freq">流れる量の目安：<b>2か月に1回ほど</b>（2026年1〜8月で4回）</span></span></li>
       <li><span class="badge">任意</span><b>c_スタッフ等（出演以外）の募集</b><span class="sub">受付・撮影・制作など、出演以外のお仕事の募集。<span class="freq">流れる量の目安：<b>年に数回</b>（2026年1〜8月で1回）</span></span></li>
       <li><span class="badge">任意</span><b>d_無料の案内</b><span class="sub">参加費のかからないワークショップ・勉強会などのご案内。<span class="freq">流れる量の目安：<b>月1回ほど</b>（2026年1〜8月で8回）</span></span></li>
       <li><span class="badge">任意</span><b>e_有料の案内</b><span class="sub">費用のかかる講座・企画などのご案内。<span class="freq">流れる量の目安：<b>1〜2か月に1回</b>（2026年1〜8月で6回）</span></span></li>
-      <li><span class="badge">出演時</span><b>各公演（上演回）ごとのスペース</b><span class="sub"><b>通知は必ずオンにしてください。</b>当日の集合時間や直前の変更をここでお伝えします。出演が決まった回ごとにお作りします。香盤・集合時間・当日の連絡はここで。公演が終わったあとも残しますので、共演者との交流の場としてお使いください。</span></li>
+      <li><span class="badge req">出演時</span><b>各公演（上演回）ごとのスペース</b><span class="sub"><b>招待されたら参加し、通知はオンでお願いします。</b>公演ごとに作成し、関係者をご招待します。連絡事項やディレクションの共有、当日の連絡もここで行います。</span></li>
     </ul>
+    <figure class="mock"><svg viewBox="0 0 350 330" role="img" aria-label="参加したスペースがチャットの一覧に並んでいる図" xmlns="http://www.w3.org/2000/svg" font-family="inherit"><rect x="2" y="2" width="176" height="326" rx="22" fill="#16283C"/><rect x="10" y="26" width="160" height="286" rx="6" fill="#FAFAF7"/><rect x="70" y="11" width="40" height="5" rx="3" fill="#0E1A28"/><rect x="10" y="26" width="160" height="34" rx="6" fill="#F1EFE9"/><text x="22" y="48" font-size="11.5" fill="#16283C" font-weight="700" text-anchor="start">チャット</text><text x="22" y="78" font-size="10" fill="#4A5B6E" font-weight="400" text-anchor="start">スペース</text><rect x="18" y="88" width="144" height="28" rx="6" fill="#FFFFFF" stroke="#DCD8CE" stroke-width="1"/><rect x="26" y="95" width="14" height="14" rx="3" fill="#F1EFE9"/><text x="46" y="106" font-size="9.5" fill="#16283C" font-weight="700" text-anchor="start">ミサキカク全体連絡</text><rect x="18" y="122" width="144" height="28" rx="6" fill="#FFFFFF" stroke="#DCD8CE" stroke-width="1"/><rect x="26" y="129" width="14" height="14" rx="3" fill="#F1EFE9"/><text x="46" y="140" font-size="9.5" fill="#16283C" font-weight="400" text-anchor="start">a_ミサキカクの募集</text><rect x="18" y="156" width="144" height="28" rx="6" fill="#FFFFFF" stroke="#DCD8CE" stroke-width="1"/><rect x="26" y="163" width="14" height="14" rx="3" fill="#F1EFE9"/><text x="46" y="174" font-size="9.5" fill="#16283C" font-weight="400" text-anchor="start">b_他団体の募集</text><rect x="18" y="190" width="144" height="28" rx="6" fill="#FFFFFF" stroke="#DCD8CE" stroke-width="1"/><rect x="26" y="197" width="14" height="14" rx="3" fill="#F1EFE9"/><text x="46" y="208" font-size="7.4" fill="#16283C" font-weight="400" text-anchor="start">c_スタッフ等（出演以外）の募集</text><rect x="18" y="224" width="144" height="28" rx="6" fill="#FFFFFF" stroke="#DCD8CE" stroke-width="1"/><rect x="26" y="231" width="14" height="14" rx="3" fill="#F1EFE9"/><text x="46" y="242" font-size="9.5" fill="#16283C" font-weight="400" text-anchor="start">d_無料の案内</text><rect x="18" y="258" width="144" height="28" rx="6" fill="#FFFFFF" stroke="#DCD8CE" stroke-width="1"/><rect x="26" y="265" width="14" height="14" rx="3" fill="#F1EFE9"/><text x="46" y="276" font-size="9.5" fill="#16283C" font-weight="400" text-anchor="start">e_有料の案内</text><rect x="14" y="84" width="152" height="36" rx="8" fill="none" stroke="#E8B647" stroke-width="3.5"/><g transform="translate(196,60)"><g><text x="0" y="40" font-size="11" fill="#16283C" font-weight="400" text-anchor="start">参加できると、</text><text x="0" y="58" font-size="11" fill="#16283C" font-weight="400" text-anchor="start">このように並びます。</text><rect x="0" y="74" width="150" height="58" rx="8" fill="#FDF4DE" stroke="#E8B647" stroke-width="1"/><text x="10" y="96" font-size="11" fill="#16283C" font-weight="700" text-anchor="start">「全体連絡」は必須</text><text x="10" y="116" font-size="11" fill="#16283C" font-weight="400" text-anchor="start">a〜e は任意です</text></g></g></svg><figcaption>一覧に<b>「ミサキカク全体連絡」</b>が出ていれば、参加できています。</figcaption></figure>
 
-    <div class="box-dm">
-      <h4>ご連絡・お返事は「ミサキカクへのDM」で</h4>
-      <p>全体連絡とa〜eのスペースは、<b>運営からのお知らせ専用</b>です。書き込みはできませんので、ご連絡もお返事も<b>ミサキカク宛の個別チャット（DM）</b>にお送りください。他の出演者には見えません。</p>
-      <ol class="steps dm">
-        <li>Google Chatの <kbd>新しいチャット</kbd> をタップします。</li>
-        <li>検索欄に <b>info@misakikaku.com</b> と入力します。</li>
-        <li>出てきたミサキカクを選ぶと、1対1のチャットが開きます。</li>
-        <li>この画面は<b>ピン留め</b>しておくと、次から探さずに済みます。</li>
-      </ol>
-      <p class="mini-note">ご連絡の際は、<b>どのお知らせに関するものか分かるように一言添えて</b>お送りください。「a_の9月2日の件です」など。</p>
-    </div>
+
+    <p class="spaces-note">「ミサキカク全体連絡」とa〜eの6つは<b>運営からのお知らせ専用</b>で、書き込みはできません（各公演のスペースには書き込めます）。
+      ご連絡やお返事の方法は、<b>各スペースの説明欄</b>と、スペースの先頭に固定してあるご案内に書いてあります。</p>
+    <figure class="mock"><svg viewBox="0 0 378 330" role="img" aria-label="新しいチャットからinfo@misakikaku.comを検索してミサキカクを選ぶ図" xmlns="http://www.w3.org/2000/svg" font-family="inherit"><g transform="translate(0,0)"><rect x="2" y="2" width="176" height="326" rx="22" fill="#16283C"/><rect x="10" y="26" width="160" height="286" rx="6" fill="#FAFAF7"/><rect x="70" y="11" width="40" height="5" rx="3" fill="#0E1A28"/><rect x="18" y="34" width="144" height="24" rx="12" fill="#F1EFE9"/><text x="30" y="50" font-size="10" fill="#4A5B6E" font-weight="400" text-anchor="start">チャットを検索</text><circle cx="146" cy="46" r="10" fill="#2E6B4F"/><text x="146" y="50" font-size="10" fill="#fff" font-weight="700" text-anchor="middle">芸</text><circle cx="30" cy="78" r="8" fill="#E9E6DE"/><rect x="44" y="72" width="90" height="6" rx="3" fill="#E9E6DE"/><rect x="44" y="82" width="60" height="6" rx="3" fill="#E9E6DE"/><circle cx="30" cy="104" r="8" fill="#E9E6DE"/><rect x="44" y="98" width="90" height="6" rx="3" fill="#E9E6DE"/><rect x="44" y="108" width="60" height="6" rx="3" fill="#E9E6DE"/><circle cx="30" cy="130" r="8" fill="#E9E6DE"/><rect x="44" y="124" width="90" height="6" rx="3" fill="#E9E6DE"/><rect x="44" y="134" width="60" height="6" rx="3" fill="#E9E6DE"/><circle cx="30" cy="156" r="8" fill="#E9E6DE"/><rect x="44" y="150" width="90" height="6" rx="3" fill="#E9E6DE"/><rect x="44" y="160" width="60" height="6" rx="3" fill="#E9E6DE"/><circle cx="30" cy="182" r="8" fill="#E9E6DE"/><rect x="44" y="176" width="90" height="6" rx="3" fill="#E9E6DE"/><rect x="44" y="186" width="60" height="6" rx="3" fill="#E9E6DE"/><circle cx="30" cy="208" r="8" fill="#E9E6DE"/><rect x="44" y="202" width="90" height="6" rx="3" fill="#E9E6DE"/><rect x="44" y="212" width="60" height="6" rx="3" fill="#E9E6DE"/><circle cx="30" cy="234" r="8" fill="#E9E6DE"/><rect x="44" y="228" width="90" height="6" rx="3" fill="#E9E6DE"/><rect x="44" y="238" width="60" height="6" rx="3" fill="#E9E6DE"/><rect x="72" y="268" width="88" height="30" rx="15" fill="#16283C"/><text x="116" y="288" font-size="9.5" fill="#fff" font-weight="700" text-anchor="middle">✎ 新しいチャット</text><rect x="66" y="262" width="100" height="42" rx="8" fill="none" stroke="#E8B647" stroke-width="3.5"/><rect x="88.0" y="236" width="56" height="19" rx="9" fill="#E8B647"/><text x="116.0" y="249.5" font-size="10.5" fill="#16283C" font-weight="700" text-anchor="middle">①タップ</text></g><g transform="translate(198,0)"><rect x="2" y="2" width="176" height="326" rx="22" fill="#16283C"/><rect x="10" y="26" width="160" height="286" rx="6" fill="#FAFAF7"/><rect x="70" y="11" width="40" height="5" rx="3" fill="#0E1A28"/><rect x="10" y="26" width="160" height="34" rx="6" fill="#F1EFE9"/><text x="22" y="48" font-size="11.5" fill="#16283C" font-weight="700" text-anchor="start">新しいチャット</text><rect x="18" y="70" width="144" height="28" rx="6" fill="#FFFFFF" stroke="#DCD8CE" stroke-width="1"/><text x="26" y="88" font-size="10" fill="#16283C" font-weight="700" text-anchor="start">info@misakikaku.com</text><rect x="67.5" y="104" width="45" height="19" rx="9" fill="#E8B647"/><text x="90.0" y="117.5" font-size="10.5" fill="#16283C" font-weight="700" text-anchor="middle">②入力</text><circle cx="36" cy="148" r="10" fill="#16283C"/><text x="36" y="152" font-size="10" fill="#fff" font-weight="700" text-anchor="middle">ミ</text><text x="52" y="145" font-size="11" fill="#16283C" font-weight="700" text-anchor="start">ミサキカク</text><text x="52" y="158" font-size="8.5" fill="#4A5B6E" font-weight="400" text-anchor="start">info@misakikaku.com</text><rect x="20" y="130" width="140" height="36" rx="8" fill="none" stroke="#E8B647" stroke-width="3.5"/><rect x="67.5" y="172" width="45" height="19" rx="9" fill="#E8B647"/><text x="90.0" y="185.5" font-size="10.5" fill="#16283C" font-weight="700" text-anchor="middle">③選ぶ</text></g><path d="M182 165.0 l12 0" stroke="#4A5B6E" stroke-width="2.5"/><path d="M192 160.0 l6 5 l-6 5" fill="none" stroke="#4A5B6E" stroke-width="2.5"/></svg><figcaption>「新しいチャット」→ <b>info@misakikaku.com</b> を入力 →「ミサキカク」を選ぶ。開いた画面がミサキカクとの1対1のチャット（DM）です。他の出演者には見えません。</figcaption></figure>
+
 
     <div class="lamp">
       <b>通知が要らないと思ったら</b>
-      a〜eの招待メールは、<b>「参加」を押さなければそのまま</b>で構いません。すでに参加したものは、スペースを開いて名前をタップ → 通知 →「メンションのみ」にすると、自分が名前を呼ばれたときだけ届きます。それでも不要なら、同じ画面から<b>退出</b>もできます。<b>抜けたことで出演の機会が減ることはありません</b>し、運営側から確認することもありません。あとから入り直すのも自由です。
+      a〜eの招待メールは、<b>「参加」を押さなければそのまま</b>で構いません。すでに参加したものは、スペースを開いて名前をタップ → 通知 →「メンションのみ」にすると、自分が名前を呼ばれたときだけ届きます。それでも不要なら、同じ画面から<b>退出</b>もできます。<b>a〜eの5つは、抜けても出演機会に影響しません</b>し、運営側から確認することもありません。あとから入り直すのも自由です。
     </div>
 
     <details class="help">
@@ -643,26 +699,27 @@
   <section class="step" id="step6">
     <div class="step-head">
       <span class="step-no">手順6</span>
-      <h2>「マイチャット」を作って表示名を確かめる</h2>
+      <h2>出演者登録フォームに入力する</h2>
       <span class="who all">全員</span>
     </div>
-    <p class="why">最後に、<b>自分だけが見られるチャット</b>を作ります。ここで表示名を確認できるほか、下書きやテスト送信の場所としてずっと使えます。</p>
+    <p class="why"><b>手順5とは別のフォームです。</b>　手順5でお聞きしたのは「スペースにご招待するためのメールアドレス」だけでした。こちらは<b>お仕事のご依頼やお支払いの手続きに必要な情報</b>をお預かりするものです。お手数ですが、どちらもご入力をお願いします。</p>
+
+    <div class="storelinks">
+      <a class="store" href="https://docs.google.com/forms/d/e/1FAIpQLSd4gHub4-RuPMN3bMMAglvr3egQySowbA9UzKIOYuaeF5ZQHQ/viewform" target="_blank" rel="noopener">出演者登録フォームを開く<span>Googleフォームを開く</span></a>
+    </div>
 
     <ol class="steps">
-      <li>Google Chatの画面下（またはパソコンなら左）の <kbd>新しいチャット</kbd> をタップします。</li>
-      <li>検索欄に<b>自分の名前かメールアドレス</b>を入力します。</li>
-      <li>候補に出てきた<b>自分自身</b>を選びます。
-        <span class="note">名前の横に「自分」と表示されます。</span></li>
-      <li>何か短く送ってみます。「テスト」で構いません。</li>
-      <li>投稿した自分の名前が<b>思っていた名前になっているか</b>を確認します。</li>
-      <li>ちがう名前になっていたら、手順3に戻ってアカウントを切り替えてください。</li>
+      <li>上のボタンからフォームを開きます。<b>Google Chatに参加したときと同じ、お仕事用のアカウント</b>で開いてください。別のアカウントで送ると、こちらでどなたの登録か分からなくなってしまいます。</li>
+      <li>案内にしたがって入力し、送信します。</li>
+      <li>送信後の画面に、SNS・Webページを登録するフォーム（②）のリンクが出ます。Webパンフレットに載せたい方はそちらもどうぞ（任意です）。</li>
+      <li>送信後、こちらで内容を確認します。足りないところがあれば、こちらからご連絡します。</li>
     </ol>
 
     <div class="lamp">
-      <b>マイチャットは、こう使うと便利です</b>
-      <span class="tipline"><b>下書き</b>…長い文章を送る前に、ここで書いて読み返してから貼り直せます。</span>
-      <span class="tipline"><b>テスト送信</b>…写真がちゃんと送れるか、文字化けしていないかを、誰にも見られずに試せます。</span>
-      <span class="tipline"><b>メモ置き場</b>…台本の写真、香盤表、交通費の領収書などを送っておくと、スマホを機種変更しても残ります。</span>
+      <b>フォームが2つある理由</b>
+      <span class="tipline"><b>手順5のフォーム</b>…Google Chatのスペースにご招待するためのものです。メールアドレスだけをお聞きしています。</span>
+      <span class="tipline"><b>手順6のフォーム（このページ）</b>…ご出演やお支払いの手続きに使う情報です。ご連絡とは別の目的でお預かりします。</span>
+      片方だけだと手続きが進みませんので、両方のご入力をお願いします。
     </div>
 
     <div class="check">
@@ -671,10 +728,9 @@
       <label><input type="checkbox"><span>スマホに追加した（元のアカウントも残っている）</span></label>
       <label><input type="checkbox"><span>Google Chatアプリを入れて、お仕事用アカウントに切り替えた</span></label>
       <label><input type="checkbox"><span>通知をオンにした（アプリ・本体の両方）</span></label>
-      <label><input type="checkbox"><span>フォームからアドレスを送った</span></label>
+      <label><input type="checkbox"><span>スペース招待フォームからアドレスを送った</span></label>
       <label><input type="checkbox"><span>招待メールから「ミサキカク全体連絡」に参加した（a〜eは任意）</span></label>
-      <label><input type="checkbox"><span>マイチャットで表示名を確認した</span></label>
-      <label><input type="checkbox"><span>ミサキカクへのDMを開いてピン留めした</span></label>
+      <label><input type="checkbox"><span>出演者登録フォームに入力した</span></label>
       <label><input type="checkbox"><span>メールアドレスとパスワードをメモした</span></label>
     </div>
   </section>
@@ -695,13 +751,15 @@
       <dd>名前だけ変えることもできます。Googleアカウントの設定 →「個人情報」→「名前」から編集してください。ただし<b>その名前はGmailやGoogleドキュメントなど、そのアカウント全体で表示される名前</b>になります。そのアカウントで本名を使いたい相手がいる場合は、新しく作る（手順1）ほうが安全です。</dd>
 
       <dt>LINE公式アカウントはいつまで使えますか？</dt>
-      <dd>2026年9月から12月までは両方でご連絡し、<b>この間のメインはLINE</b>のままです。2027年1月からGoogle Chatがメインになり、<b>2027年6月</b>にLINEでのご連絡を終了します。時間は十分ありますので、あわてずに進めてください。</dd>
+      <dd>2026年11月から12月までは両方でご連絡し、<b>この間のメインはLINE</b>のままです。2027年1月からGoogle Chatがメインになり、<b>2027年6月</b>にLINEでのご連絡を終了します。時間は十分ありますので、あわてずに進めてください。</dd>
 
       <dt>パソコンでも使えますか？</dt>
       <dd>使えます。<kbd>chat.google.com</kbd> を開いてお仕事用アカウントでログインしてください。</dd>
 
       <dt>芸名を変えたときは？</dt>
-      <dd>ご自身で変更できます。Googleアカウントの設定 →「個人情報」→「名前」から編集すると、すぐにChatの表示にも反映されます。</dd>
+      <dd>ご自身で、次の<b>2か所</b>を直してください。<br>
+        ①<b>出演者登録フォーム（手順6）</b>…同じアカウントでフォームを開き直すと前回の内容が出ますので、「表記名」と「ふりがな」を書き換えて送信します。<br>
+        ②<b>Googleアカウントの名前</b>…Googleアカウントの設定 →「個人情報」→「名前」から編集すると、すぐにChatの表示にも反映されます。</dd>
 
       <dt>スマホを機種変更したら？</dt>
       <dd>新しい端末でメールアドレスとパスワードを使ってログインするだけです。だからこそメモが大事です。</dd>
@@ -719,7 +777,7 @@
       <dd>いいえ、任意です。案内の都合上、招待自体は一律にお送りしますが、興味のないものは招待メールの「参加」を押さずにそのままにしていただいて構いません。ご連絡いただく必要もありません。</dd>
 
       <dt>間違えて参加してしまった／あとで不要になったスペースを抜けたい</dt>
-      <dd>スペースを開いて名前をタップし、通知を「メンションのみ」にするか、退出してください。ご連絡は不要です。抜けたことで出演の機会が減ることはありません。入り直すのも自由です。</dd>
+      <dd>スペースを開いて名前をタップし、通知を「メンションのみ」にするか、退出してください。ご連絡は不要です。a〜eの5つは、抜けても出演機会に影響しません。入り直すのも自由です。</dd>
 
       <dt>LINEをやめる必要はありますか？</dt>
       <dd>ありません。個人のLINEはこれまで通りお使いください。変わるのはミサキカクからの連絡経路だけです。</dd>
@@ -738,7 +796,7 @@
 
   <footer>
     ミサキカク<br>
-    最終更新：2026年8月27日
+    最終更新：2026年11月2日
   </footer>
 </div>
 
